@@ -21,17 +21,8 @@ resource "openstack_compute_instance_v2" "test" {
 
   user_data = <<-EOF
     #cloud-config
-    users:
-      - name: default
-        # this is taken from /etc/cloud/cloud.cfg:system_info:default_user
-        lock_passwd: true
-        gecos: "Cloud User"
-        groups: [adm, systemd-journal]
+    user:
         homedir: /var/lib/cloud-user
-        sudo: ["ALL=(ALL) NOPASSWD:ALL"]
-        shell: /bin/bash
-        
-        
   EOF
 
 }
